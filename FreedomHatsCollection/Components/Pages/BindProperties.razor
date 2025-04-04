@@ -1,0 +1,22 @@
+﻿@page "/freedomhatscollection/bindprops"
+
+<h3>BindProperties</h3>
+@* //One way data binding *@
+Name : @product.Name
+<br />
+Product Description : @product.ProductDescription
+<br />
+Price : @product.Price
+Input Price: <input type="number" @bind-value="@product.Price" />
+<br />
+Is Active : @product.IsActive
+
+@code {
+    Models.Product product = new Models.Product
+        {
+            Name = "Freedom Hat",
+            ProductDescription = "A hat that represents freedom.",
+            Price = 19.99,
+            IsActive = true,
+        };
+}
