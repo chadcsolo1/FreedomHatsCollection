@@ -1,0 +1,72 @@
+﻿<div class="col-6 border p-3">
+    <h2 class="text-primary">@product.Name - @product.Id</h2>
+    <button class="btn btn-success" type="button">Create</button> <br />
+    Show Properties: <input type="checkbox" value="true" @bind="@product.ShowProperties" />
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Description</td>
+                <td>Price</td>
+                <td>IsActive</td>
+                @if (product.ShowProperties)
+                {
+                    <td>Styles</td>
+                }
+                @if (product.ShowProperties)
+                {
+                    <td>Sizes</td>
+                }
+                @if (product.ShowProperties)
+                {
+                    <td>Colors</td>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.ProductDescription</td>
+                <td>@product.Price</td>
+                <td>@(product.IsActive ? "Active" : "InActive")</td>
+                <td>
+                    @if (product.ShowProperties)
+                    {
+                        foreach (var prop in product.Style)
+                        {
+                            <p>@prop.Value</p>
+                        }
+                    }
+                </td>
+                <td>
+                    @if (product.ShowProperties)
+                    {
+                        foreach (var prop in product.Size)
+                        {
+                            <p>@prop.Value</p>
+                        }
+                    }
+                </td>
+                <td>
+                    @if (product.ShowProperties)
+                    {
+                        foreach (var prop in product.Color)
+                        {
+                            <p>@prop.Value</p>
+                        }
+                    }
+                </td>
+                <td><button class="btn btn-primary">Edit</button></td>
+                <td>
+                    <_DeleteButton productId="@product.Id" />
+                </td>
+                @* <td><button class="btn btn-danger"  @onclick="()=>DeleteProd(product.Id)">Delete</button></td> *@
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+@code {
+    [Parameter]
+    public Product product { get; set; } = new();
+}

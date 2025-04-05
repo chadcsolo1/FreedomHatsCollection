@@ -30,6 +30,30 @@
         {
             get;
             set;
+        }
+
+        public bool ShowProperties
+        {
+            get;
+            set;
         }   
+
+        public IEnumerable<Product_Properties> Style
+        {
+            get;
+            set;
+        }
+
+        public IEnumerable<Product_Properties> Size
+        {
+            get;
+            set;
+        }
+
+        public IEnumerable<Product_Properties> Color
+        {
+            get;
+            set;
+        }
     }
 }

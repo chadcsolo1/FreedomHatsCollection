@@ -1,122 +1,30 @@
-﻿@page "/freedomhatscollection/bindprops"
+﻿@page "/freedomhatscollection/products"
+<h3>Products</h3>
 
-<h3>BindProperties</h3>
-
-<div class="row">
-    <div class="col-6 border p-3">
-        <h3 class="text-primary">Product Selections</h3>
-        <hr />
-
-        <br />
-        Input Price: <input type="number" @bind="@product.Price" @bind:event="oninput" />
-        <br />
-
-        Is Active : <input type="checkbox" @bind="@product.IsActive" /> <br />
-
-        Style:
-        <select @bind="styleProp">
-            @foreach (var prop in product.Style)
-            {
-                <option value="@prop.Key">@prop.Value</option>
-            }
-        </select>
-        <br />
-        Size:
-        <select @bind="sizeProp">
-            @foreach (var prop in product.Size)
-            {
-                <option value="@prop.Key">@prop.Value</option>
-            }
-        </select>
-        <br />
-        Color:
-        <select @bind="colorProp">
-            @foreach (var prop in product.Color)
-            {
-                <option value="@prop.Key">@prop.Value</option>
-            }
-        </select>
-
-    </div>
-
-    <div class="col-6 border p-3">
-        <h3 class="text-primary">Product Summary</h3>
-        <hr />
-
-        Product Description : @product.ProductDescription
-        <br /> 
-        Price : $@product.Price <br />
-        Is Active :  @(product.IsActive ? "Active" : "InActive") <br /> 
-
-        @if (!string.IsNullOrEmpty(styleProp))
-        { 
-            <p>Style: @product.Style.FirstOrDefault(x => x.Key == styleProp).Value</p> <br />
-        } 
-
-        @if (!string.IsNullOrEmpty(sizeProp)) 
-        { 
-            <p>Size: @product.Size.FirstOrDefault(x => x.Key == sizeProp).Value</p> <br />
-        } 
-
-        @if (!string.IsNullOrEmpty(colorProp)) 
-        {
-            <p>Color: @product.Color.FirstOrDefault(x => x.Key == colorProp).Value</p> <br />
-        }
+@foreach(var product in productsList)
+{
+    <_ProductCard product="product" />
+}
 
 
-
-    </div>
-
-    <div class="col-12 p-4">
-        <h2 class="text-success">Product Table</h2>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <td>Name</td>
-                    <td>Description</td>
-                    <td>Price</td>
-                    <td>IsActive</td>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var product in productsList)
-                {
-                    <tr>
-                        <td><input type="text" @bind="@product.Name" @bind:event="oninput"/></td>
-                        <td><input type="text" @bind="@product.ProductDescription" @bind:event="oninput"/></td>
-                        <td><input type="number" @bind="@product.Price" @bind:event="oninput"/></td>
-                        <td><input type="checkbox" @bind="@product.IsActive"/></td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-
-    <div class="col-6 border p-3">
-        <h2 class="text-primary">Product Summary</h2>
-        <hr />
-        @foreach(var product in productsList)
-        {
-            <div>Name: @product.Name Price: $@product.Price Is Active: @product.IsActive</div> <br />
-        }
-    </div>
-</div>
 
 
 
 @code {
-    private string styleProp = "";
-    private string sizeProp = "";
-    private string colorProp = "";
+    private int prodId = 0;
     List<Product> productsList = new();
-    
+
+
+
+
     Product product = new()
-    {
+        {
             Id = 1,
             Name = "Freedom Hat",
             ProductDescription = "A hat that represents freedom.",
             Price = 19.99,
             IsActive = true,
+            ShowProperties = false,
             Style = new List<Product_Properties>()
             {
                 new Product_Properties { Id = 1, Key = "Sport", Value = "Sport"},
@@ -135,73 +43,48 @@
                 new Product_Properties { Id = 2, Key = "Medium", Value = "Medium"},
                 new Product_Properties { Id = 3, Key = "Large", Value = "Large"}
             }
-    };
+        };
 
     protected override void OnInitialized()
     {
-        
-        productsList.Add(new()
-        {
 
-            Id = 1,
-            Name = "Freedom Hat",
-            ProductDescription = "A hat that represents freedom",
-            Price = 19.99,
-            IsActive = true,
-            Style = new List<Product_Properties>()
+        productsList.Add(new()
+            {
+
+                Id = 1,
+                Name = "Freedom Hat",
+                ProductDescription = "A hat that represents freedom",
+                Price = 19.99,
+                IsActive = true,
+                ShowProperties = false,
+                Style = new List<Product_Properties>()
             {
                 new Product_Properties { Id = 1, Key = "Sport", Value = "Sport"},
                 new Product_Properties { Id = 2, Key = "Casual", Value = "Casual"},
                 new Product_Properties { Id = 3, Key = "Trucker", Value = "Trucker"}
             },
-            Color = new List<Product_Properties>()
+                Color = new List<Product_Properties>()
             {
                 new Product_Properties { Id = 1, Key = "Red", Value = "Red"},
                 new Product_Properties { Id = 2, Key = "Blue", Value = "Blue"},
                 new Product_Properties { Id = 3, Key = "White", Value = "White"}
             },
-            Size = new List<Product_Properties>()
+                Size = new List<Product_Properties>()
             {
                 new Product_Properties { Id = 1, Key = "Small", Value = "Small"},
                 new Product_Properties { Id = 2, Key = "Medium", Value = "Medium"},
                 new Product_Properties { Id = 3, Key = "Large", Value = "Large"}
             }
-        });
+            });
 
         productsList.Add(new()
-        {
+            {
                 Id = 2,
                 Name = "Patriot Hat",
                 ProductDescription = "A hat that shows your patriotism",
                 Price = 18.99,
                 IsActive = true,
-                Style = new List<Product_Properties>()
-                {
-                    new Product_Properties { Id = 1, Key = "Sport", Value = "Sport"},
-                    new Product_Properties { Id = 2, Key = "Casual", Value = "Casual"},
-                    new Product_Properties { Id = 3, Key = "Trucker", Value = "Trucker"}
-                },
-                        Color = new List<Product_Properties>()
-                {
-                    new Product_Properties { Id = 1, Key = "Red", Value = "Red"},
-                    new Product_Properties { Id = 2, Key = "Blue", Value = "Blue"},
-                    new Product_Properties { Id = 3, Key = "White", Value = "White"}
-                },
-                        Size = new List<Product_Properties>()
-                {
-                    new Product_Properties { Id = 1, Key = "Small", Value = "Small"},
-                    new Product_Properties { Id = 2, Key = "Medium", Value = "Medium"},
-                    new Product_Properties { Id = 3, Key = "Large", Value = "Large"}
-                }
-        });
-
-        productsList.Add(new()
-        {
-                Id = 3,
-                Name = "Revolutionary Hat",
-                ProductDescription = "A hat that show your willing to stand up to tyranny",
-                Price = 21.99,
-                IsActive = true,
+                ShowProperties = false,
                 Style = new List<Product_Properties>()
                 {
                     new Product_Properties { Id = 1, Key = "Sport", Value = "Sport"},
@@ -220,15 +103,44 @@
                     new Product_Properties { Id = 2, Key = "Medium", Value = "Medium"},
                     new Product_Properties { Id = 3, Key = "Large", Value = "Large"}
                 }
-        });
+            });
 
         productsList.Add(new()
-        {       
+            {
+                Id = 3,
+                Name = "Revolutionary Hat",
+                ProductDescription = "A hat that show your willing to stand up to tyranny",
+                Price = 21.99,
+                IsActive = true,
+                ShowProperties = false,
+                Style = new List<Product_Properties>()
+                {
+                    new Product_Properties { Id = 1, Key = "Sport", Value = "Sport"},
+                    new Product_Properties { Id = 2, Key = "Casual", Value = "Casual"},
+                    new Product_Properties { Id = 3, Key = "Trucker", Value = "Trucker"}
+                },
+                Color = new List<Product_Properties>()
+                {
+                    new Product_Properties { Id = 1, Key = "Red", Value = "Red"},
+                    new Product_Properties { Id = 2, Key = "Blue", Value = "Blue"},
+                    new Product_Properties { Id = 3, Key = "White", Value = "White"}
+                },
+                Size = new List<Product_Properties>()
+                {
+                    new Product_Properties { Id = 1, Key = "Small", Value = "Small"},
+                    new Product_Properties { Id = 2, Key = "Medium", Value = "Medium"},
+                    new Product_Properties { Id = 3, Key = "Large", Value = "Large"}
+                }
+            });
+
+        productsList.Add(new()
+            {
                 Id = 4,
                 Name = "MinuteMan Hat",
                 ProductDescription = "A hat that shows your are ready to defend your freedom",
                 Price = 25.99,
                 IsActive = true,
+                ShowProperties = false,
                 Style = new List<Product_Properties>()
                 {
                     new Product_Properties { Id = 1, Key = "Sport", Value = "Sport"},
@@ -250,5 +162,9 @@
         });
     }
 
-   
+    private void DeleteProd(int id)
+    {
+        var product = productsList.Find(x => x.Id == id);
+        productsList.Remove(product);
+    }
 }
