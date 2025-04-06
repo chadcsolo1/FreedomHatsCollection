@@ -1,17 +1,33 @@
 ﻿@page "/freedomhatscollection/products"
 <h3>Products</h3>
+<p>Favorite Count: @favoritesCount</p>
 
-@foreach(var product in productsList)
+<div class="col-6 border p-3">
+    <h2>Product Details</h2>
+    <hr />
+    @if (productToDisplay != null)
+    {
+        <h3>@productToDisplay.Name</h3>
+        <p>@productToDisplay.ProductDescription</p>
+        <p>Price: @productToDisplay.Price</p>
+        <p>IsActive: @(productToDisplay.IsActive ? "Active" : "InActive")</p>
+
+    }
+</div>
+
+@foreach (var product in productsList)
 {
-    <_ProductCard product="product" />
+    <_ProductCard product="product" OnFavoritesUpdated="FavoritesCountChange" OnProductSelect="ProductToDisplay" />
 }
 
 
 
 
 
+
 @code {
-    private int prodId = 0;
+    public int favoritesCount { get; set; } = 0;
+    public Product productToDisplay { get; set; }
     List<Product> productsList = new();
 
 
@@ -162,9 +178,27 @@
         });
     }
 
-    private void DeleteProd(int id)
+    // private void DeleteProd(int id)
+    // {
+    //     var product = productsList.Find(x => x.Id == id);
+    //     productsList.Remove(product);
+    // }
+
+    protected void FavoritesCountChange(bool isFavorite)
     {
-        var product = productsList.Find(x => x.Id == id);
-        productsList.Remove(product);
+        if (isFavorite)
+        {
+            favoritesCount++;
+        } else
+        {
+            favoritesCount--;
+        }
     }
+
+    protected void ProductToDisplay(int id)
+    {
+        productToDisplay = productsList.Find(x => x.Id == id);
+    }
+
+
 }

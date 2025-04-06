@@ -1,6 +1,7 @@
-﻿<div class="col-6 border p-3">
+﻿<div class="col-6 border p-3" @onclick="()=> ProductSelected(product.Id)">
     <h2 class="text-primary">@product.Name - @product.Id</h2>
     <button class="btn btn-success" type="button">Create</button> <br />
+    Add to Favorites: <input type="checkbox" @onchange="FavoritesUpdated" /> <br />
     Show Properties: <input type="checkbox" value="true" @bind="@product.ShowProperties" />
     <table class="table table-striped">
         <thead>
@@ -69,4 +70,25 @@
 @code {
     [Parameter]
     public Product product { get; set; } = new();
+
+    //There are two ways to use the event callback.
+    //1. When you need to pass some value to the parent component.
+    //2. When you just need to invoke a function in the parent component without any information passed up from the child component.
+    //In case 1, you need the Task/Method like FavoritesUpdated or ProductSelected below
+    //In case 2, you just need to create the callback and reference the callback in the event definiton like @onclick="OnFavoritesUpdate"
+    [Parameter]
+    public EventCallback<bool> OnFavoritesUpdated { get; set; }
+
+    private async Task FavoritesUpdated(ChangeEventArgs args)
+    {
+        await OnFavoritesUpdated.InvokeAsync((bool)(args.Value?? false));
+    }
+
+    [Parameter]
+    public EventCallback<int> OnProductSelect { get; set; }
+
+    private async Task ProductSelected(int id)
+    {
+        await OnProductSelect.InvokeAsync(product.Id);
+    }
 }
