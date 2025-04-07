@@ -1,4 +1,8 @@
 ﻿@page "/freedomhatscollection/products"
+@inject NavigationManager NavigationManager
+
+
+
 <h3>Products</h3>
 <p>Favorite Count: @favoritesCount</p>
 
@@ -10,8 +14,8 @@
         <h3>@productToDisplay.Name</h3>
         <p>@productToDisplay.ProductDescription</p>
         <p>Price: @productToDisplay.Price</p>
-        <p>IsActive: @(productToDisplay.IsActive ? "Active" : "InActive")</p>
-
+        <p>IsActive: @(productToDisplay.IsActive ? "Active" : "InActive")</p> <br />
+        <button @onclick="NavigateToShoppingCart">Buy</button>
     }
 </div>
 
@@ -19,6 +23,12 @@
 {
     <_ProductCard product="product" OnFavoritesUpdated="FavoritesCountChange" OnProductSelect="ProductToDisplay" />
 }
+
+@* <Grid TItem="Product"
+    Class="table table-hover table-bordered table-stripped"
+    >
+
+</Grid> *@
 
 
 
@@ -198,6 +208,11 @@
     protected void ProductToDisplay(int id)
     {
         productToDisplay = productsList.Find(x => x.Id == id);
+    }
+
+    protected void NavigateToShoppingCart()
+    {
+        NavigationManager.NavigateTo("/shoppingcart");
     }
 
 
