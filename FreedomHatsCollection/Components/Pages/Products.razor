@@ -71,6 +71,13 @@
             }
         };
 
+    //OnAfterRender(bool firstRender) : Runs after the DOM has been fully rendered so after OnInitialized().
+    //Use Case: If you need to do something after the component has been rendered. For example, if you need to call a JS function to manipulate the DOM.
+    //Use Case: You might call an eventcallback that needed the DOM to be fully rendered.
+
+    //OnInitializedAsync
+    //OnInitialized : runs code inside when the component is completely loaded.
+    //Common uses => Load data : so you may call an endpoint or have a call to the DB which will be kicked off as soon as the component is navigated to.
     protected override void OnInitialized()
     {
 

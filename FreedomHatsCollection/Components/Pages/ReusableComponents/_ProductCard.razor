@@ -71,6 +71,13 @@
     [Parameter]
     public Product product { get; set; } = new();
 
+    //OnParametersSet() : Two main use cases 1. called when component is first initialized. 2. each time new or updated parameters are received from parent in the render tree
+    //One use case for this application : Since the product is a parameter here OnParameterSet() will be called if one of the products is updated.
+    protected override void OnParametersSet()
+    {
+        
+    }
+
     //There are two ways to use the event callback.
     //1. When you need to pass some value to the parent component.
     //2. When you just need to invoke a function in the parent component without any information passed up from the child component.

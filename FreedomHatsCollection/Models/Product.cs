@@ -1,4 +1,6 @@
-﻿namespace FreedomHatsCollection.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace FreedomHatsCollection.Models
 {
     public class Product
     {
@@ -7,7 +9,7 @@
             get;
             set;
         }
-
+        [Required]
         public string Name
         {
             get;
@@ -19,7 +21,7 @@
             get;
             set;
         } = string.Empty;
-
+        [Range(1, 1000)]
         public double Price
         {
             get;
@@ -36,7 +38,12 @@
         {
             get;
             set;
-        }   
+        }
+        public DateOnly AvailableAfter
+        {
+            get;
+            set;
+        }
 
         public IEnumerable<Product_Properties> Style
         {
@@ -55,5 +62,7 @@
             get;
             set;
         }
+
+
     }
 }

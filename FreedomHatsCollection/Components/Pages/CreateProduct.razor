@@ -1,0 +1,69 @@
+﻿@page "/createproduct"
+
+
+<div class="col-12 offset-md-2 col-md-8 border">
+    <div class="text-center pt-4">
+        <h2 class="text-success">Create Product</h2>
+        <hr />
+    </div>
+    <div class="mx-2 px-2">
+        <EditForm FormName="CreateProduct" Model="Product">
+            <div class="form-group py-2">
+                <label for="Name">Product Name</label>
+                <InputText id="Name" class="form-control" @bind-Value="@Product.Name" />
+            </div>
+            <div class="form-group py-2">
+                <label for="Description">Product Description</label>
+                <InputText id="Description" class="form-control" @bind-Value="@Product.ProductDescription" />
+            </div>
+            <div class="form-group py-2">
+                <label for="Price">Product Price</label>
+                <InputNumber id="Price" class="form-control" @bind-Value="@Product.Price" />
+            </div>
+            <div class="form-group py-2">
+                <label for="IsActive">Product Active</label>
+                <InputCheckbox id="IsActive" class="form-control" @bind-Value="@Product.IsActive" />
+            </div>
+            <div class="form-group py-2">
+                <label for="AvailableAfter">Product AvailableAfter</label>
+                <InputDate id="AvailableAfter" class="form-control" @bind-Value="@Product.AvailableAfter" />
+            </div>
+            <div class="form-group py-2">
+                <label for="Style">Product Style</label>
+                <InputSelect id="Style" class="form-control" @bind-Value="@Product.Style">
+                    <option value="">Select Product</option>
+                    <option value="Sport">Sport</option>
+                    <option value="Casual">Casual</option>
+                    <option value="Trucker">Trucker</option>
+                </InputSelect>
+            </div>
+            <div class="form-group py-2">
+                <label for="Size">Product Size</label>
+                <InputSelect id="Size" class="form-control" @bind-Value="@Product.Size">
+                    <option value="">Select Product</option>
+                    <option value="Small">Small</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Large">Large</option>
+                </InputSelect>
+            </div>
+            <div class="form-group py-2">
+                <label for="Color">Product Color</label>
+                <InputSelect id="Color" class="form-control" @bind-Value="@Product.Color">
+                    <option value="">Select Product</option>
+                    <option value="Red">Red</option>
+                    <option value="Blue">Blue</option>
+                    <option value="White">White</option>
+                </InputSelect>
+            </div>
+           <button type="submit" class="btn btn-primary my-3" style="width: 200px;">Create Product</button>
+        </EditForm>
+    </div>
+</div>
+
+@code {
+    public Product Product { get; set; } = new Product();
+
+
+}
+
+
