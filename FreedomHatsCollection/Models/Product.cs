@@ -4,6 +4,7 @@ namespace FreedomHatsCollection.Models
 {
     public class Product
     {
+        [Key]
         public int Id
         {
             get;
@@ -27,6 +28,12 @@ namespace FreedomHatsCollection.Models
             get;
             set;
         }
+        [Required]
+        public int StockQuantity
+        {
+            get;
+            set;
+        }   
 
         public bool IsActive
         {
@@ -43,21 +50,19 @@ namespace FreedomHatsCollection.Models
         {
             get;
             set;
-        }
+        } = DateOnly.FromDateTime(DateTime.Now);
 
-        public IEnumerable<Product_Properties> Style
+        public Style Styles
         {
             get;
             set;
         }
-
-        public IEnumerable<Product_Properties> Size
+        public Size Sizes
         {
             get;
             set;
         }
-
-        public IEnumerable<Product_Properties> Color
+        public Color Colors
         {
             get;
             set;
@@ -65,4 +70,38 @@ namespace FreedomHatsCollection.Models
 
 
     }
+
+            public enum Style
+        {
+            BaseballCap,
+            Beanie,
+            BucketHat,
+            Snapback,
+            DadHat,
+            TruckerHat,
+            Visor,
+            Fedora,
+            NewsboyCap,
+            SunHat
+        }
+        public enum Size
+        {
+            Small,
+            Medium,
+            Large,
+            ExtraLarge
+        }
+        public enum Color
+        {
+            Red,
+            Blue,
+            Green,
+            Yellow,
+            Black,
+            White,
+            Gray,
+            Pink,
+            Purple,
+            Orange
+        }
 }

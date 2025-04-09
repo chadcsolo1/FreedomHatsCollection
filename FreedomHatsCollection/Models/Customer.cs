@@ -4,33 +4,37 @@ namespace FreedomHatsCollection.Models
 {
     public class Customer
     {
-        public int CustomerId
+        [Key]
+        public int Id
         {
             get;
             set;
         }
-
+        [Required]
         public string FirstName
         {
             get;
             set;
         } = string.Empty;
-
+        [Required]
         public string LastName
         {
             get;
             set;
         } = string.Empty;
+        [Required]
         public string Email
         {
             get;
             set;
         } = string.Empty;
+        [Required]
         public string Password
         {
             get;
             set;
         } = string.Empty;
+        [Required]
         public string Address
         {
             get;
@@ -41,23 +45,25 @@ namespace FreedomHatsCollection.Models
             get;
             set;
         }
+        [Required]
         public DateOnly AccountCreationDate
         {
             get;
             set;
-        }
+        } = DateOnly.FromDateTime(DateTime.Now);
         [Required]
-        public List<Orders> OrderHistory
+        public List<Order> OrderHistory
         {
             get;
             set;
-        } = new List<Orders>();
+        } = new List<Order>();
+
         public List<PaymentMethod> PaymentMethods
         {
             get;
             set;
         } = new List<PaymentMethod>();
-        public DateTime AccountUpdatedDate
+        public DateTime? AccountUpdatedDate
         {
             get;
             set;

@@ -30,33 +30,18 @@
                 <td>@product.ProductDescription</td>
                 <td>@product.Price</td>
                 <td>@(product.IsActive ? "Active" : "InActive")</td>
-                <td>
-                    @if (product.ShowProperties)
-                    {
-                        foreach (var prop in product.Style)
-                        {
-                            <p>@prop.Value</p>
-                        }
-                    }
-                </td>
-                <td>
-                    @if (product.ShowProperties)
-                    {
-                        foreach (var prop in product.Size)
-                        {
-                            <p>@prop.Value</p>
-                        }
-                    }
-                </td>
-                <td>
-                    @if (product.ShowProperties)
-                    {
-                        foreach (var prop in product.Color)
-                        {
-                            <p>@prop.Value</p>
-                        }
-                    }
-                </td>
+                @if (product.ShowProperties)
+                {
+                    <td>@product.Styles</td>
+                }
+                @if (product.ShowProperties)
+                {
+                    <td>@product.Sizes</td>
+                }
+                @if (product.ShowProperties)
+                {
+                    <td>@product.Colors</td>
+                }
                 <td><button class="btn btn-primary">Edit</button></td>
                 <td>
                     <_DeleteButton productId="@product.Id" />

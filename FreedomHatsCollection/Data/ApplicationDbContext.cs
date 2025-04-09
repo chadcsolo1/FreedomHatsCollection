@@ -5,16 +5,15 @@ namespace FreedomHatsCollection.Data
 {
     public class ApplicationDbContext : DbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options)
-        {
-        }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
-        DbSet<Product> Products
-        {
-            get;
-            set;
-        }
+        public DbSet<Product> Products => Set<Product>();
+
+        public DbSet<Order> Orders => Set<Order>();
+
+        public DbSet<OrderDetails> OrderDetails => Set<OrderDetails>();
+        public DbSet<Customer> Customers => Set<Customer>();
+        public DbSet<PaymentMethod> PaymentMethods => Set<PaymentMethod>();
 
 
     }

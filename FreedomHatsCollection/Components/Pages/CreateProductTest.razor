@@ -30,16 +30,16 @@
             </div>
             <div class="form-group py-2">
                 <label for="Style">Product Style</label>
-                <InputSelect id="Style" class="form-control" @bind-Value="@Product.Style">
+                <InputSelect id="Style" class="form-control" @bind-Value="@Product.Styles">
                     <option value="">Select Product</option>
-                    <option value="Sport">Sport</option>
-                    <option value="Casual">Casual</option>
-                    <option value="Trucker">Trucker</option>
+                    <option value="Sport">BaseballCap</option>
+                    <option value="Casual">BucketHat</option>
+                    <option value="Trucker">Snapback</option>
                 </InputSelect>
             </div>
             <div class="form-group py-2">
                 <label for="Size">Product Size</label>
-                <InputSelect id="Size" class="form-control" @bind-Value="@Product.Size">
+                <InputSelect id="Size" class="form-control" @bind-Value="@Product.Sizes">
                     <option value="">Select Product</option>
                     <option value="Small">Small</option>
                     <option value="Medium">Medium</option>
@@ -48,7 +48,7 @@
             </div>
             <div class="form-group py-2">
                 <label for="Color">Product Color</label>
-                <InputSelect id="Color" class="form-control" @bind-Value="@Product.Color">
+                <InputSelect id="Color" class="form-control" @bind-Value="@Product.Colors">
                     <option value="">Select Product</option>
                     <option value="Red">Red</option>
                     <option value="Blue">Blue</option>

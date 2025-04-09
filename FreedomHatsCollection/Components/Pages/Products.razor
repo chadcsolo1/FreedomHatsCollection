@@ -51,24 +51,9 @@
             Price = 19.99,
             IsActive = true,
             ShowProperties = false,
-            Style = new List<Product_Properties>()
-            {
-                new Product_Properties { Id = 1, Key = "Sport", Value = "Sport"},
-                new Product_Properties { Id = 2, Key = "Casual", Value = "Casual"},
-                new Product_Properties { Id = 3, Key = "Trucker", Value = "Trucker"}
-            },
-            Color = new List<Product_Properties>()
-            {
-                new Product_Properties { Id = 1, Key = "Red", Value = "Red"},
-                new Product_Properties { Id = 2, Key = "Blue", Value = "Blue"},
-                new Product_Properties { Id = 3, Key = "White", Value = "White"}
-            },
-            Size = new List<Product_Properties>()
-            {
-                new Product_Properties { Id = 1, Key = "Small", Value = "Small"},
-                new Product_Properties { Id = 2, Key = "Medium", Value = "Medium"},
-                new Product_Properties { Id = 3, Key = "Large", Value = "Large"}
-            }
+            Styles = Style.Snapback,
+            Sizes = Size.Medium,
+            Colors = Color.Gray
         };
 
     //OnAfterRender(bool firstRender) : Runs after the DOM has been fully rendered so after OnInitialized().
@@ -90,24 +75,9 @@
                 Price = 19.99,
                 IsActive = true,
                 ShowProperties = false,
-                Style = new List<Product_Properties>()
-            {
-                new Product_Properties { Id = 1, Key = "Sport", Value = "Sport"},
-                new Product_Properties { Id = 2, Key = "Casual", Value = "Casual"},
-                new Product_Properties { Id = 3, Key = "Trucker", Value = "Trucker"}
-            },
-                Color = new List<Product_Properties>()
-            {
-                new Product_Properties { Id = 1, Key = "Red", Value = "Red"},
-                new Product_Properties { Id = 2, Key = "Blue", Value = "Blue"},
-                new Product_Properties { Id = 3, Key = "White", Value = "White"}
-            },
-                Size = new List<Product_Properties>()
-            {
-                new Product_Properties { Id = 1, Key = "Small", Value = "Small"},
-                new Product_Properties { Id = 2, Key = "Medium", Value = "Medium"},
-                new Product_Properties { Id = 3, Key = "Large", Value = "Large"}
-            }
+                Styles = Style.DadHat,
+                Sizes = Size.Medium,
+                Colors = Color.Red,
             });
 
         productsList.Add(new()
@@ -118,24 +88,9 @@
                 Price = 18.99,
                 IsActive = true,
                 ShowProperties = false,
-                Style = new List<Product_Properties>()
-                {
-                    new Product_Properties { Id = 1, Key = "Sport", Value = "Sport"},
-                    new Product_Properties { Id = 2, Key = "Casual", Value = "Casual"},
-                    new Product_Properties { Id = 3, Key = "Trucker", Value = "Trucker"}
-                },
-                Color = new List<Product_Properties>()
-                {
-                    new Product_Properties { Id = 1, Key = "Red", Value = "Red"},
-                    new Product_Properties { Id = 2, Key = "Blue", Value = "Blue"},
-                    new Product_Properties { Id = 3, Key = "White", Value = "White"}
-                },
-                Size = new List<Product_Properties>()
-                {
-                    new Product_Properties { Id = 1, Key = "Small", Value = "Small"},
-                    new Product_Properties { Id = 2, Key = "Medium", Value = "Medium"},
-                    new Product_Properties { Id = 3, Key = "Large", Value = "Large"}
-                }
+                Styles = Style.TruckerHat,
+                Sizes = Size.Large,
+                Colors = Color.Blue,
             });
 
         productsList.Add(new()
@@ -146,24 +101,9 @@
                 Price = 21.99,
                 IsActive = true,
                 ShowProperties = false,
-                Style = new List<Product_Properties>()
-                {
-                    new Product_Properties { Id = 1, Key = "Sport", Value = "Sport"},
-                    new Product_Properties { Id = 2, Key = "Casual", Value = "Casual"},
-                    new Product_Properties { Id = 3, Key = "Trucker", Value = "Trucker"}
-                },
-                Color = new List<Product_Properties>()
-                {
-                    new Product_Properties { Id = 1, Key = "Red", Value = "Red"},
-                    new Product_Properties { Id = 2, Key = "Blue", Value = "Blue"},
-                    new Product_Properties { Id = 3, Key = "White", Value = "White"}
-                },
-                Size = new List<Product_Properties>()
-                {
-                    new Product_Properties { Id = 1, Key = "Small", Value = "Small"},
-                    new Product_Properties { Id = 2, Key = "Medium", Value = "Medium"},
-                    new Product_Properties { Id = 3, Key = "Large", Value = "Large"}
-                }
+                Styles = Style.Snapback,
+                Sizes = Size.Small,
+                Colors = Color.White,
             });
 
         productsList.Add(new()
@@ -174,24 +114,9 @@
                 Price = 25.99,
                 IsActive = true,
                 ShowProperties = false,
-                Style = new List<Product_Properties>()
-                {
-                    new Product_Properties { Id = 1, Key = "Sport", Value = "Sport"},
-                    new Product_Properties { Id = 2, Key = "Casual", Value = "Casual"},
-                    new Product_Properties { Id = 3, Key = "Trucker", Value = "Trucker"}
-                },
-                Color = new List<Product_Properties>()
-                {
-                    new Product_Properties { Id = 1, Key = "Red", Value = "Red"},
-                    new Product_Properties { Id = 2, Key = "Blue", Value = "Blue"},
-                    new Product_Properties { Id = 3, Key = "White", Value = "White"}
-                },
-                Size = new List<Product_Properties>()
-                {
-                    new Product_Properties { Id = 1, Key = "Small", Value = "Small"},
-                    new Product_Properties { Id = 2, Key = "Medium", Value = "Medium"},
-                    new Product_Properties { Id = 3, Key = "Large", Value = "Large"}
-                }
+                Styles = Style.BucketHat,
+                Sizes = Size.Large,
+                Colors = Color.Red,
         });
     }
 

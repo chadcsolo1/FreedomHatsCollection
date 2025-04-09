@@ -1,16 +1,18 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FreedomHatsCollection.Models
 {
-    public class Orders
+    public class Order
     {
         [Key]
-        public int OrderId
+        public int Id
         {
             get;
             set;
         }
 
+        [ForeignKey("Customer")] // Specify the related navigation property or table name  
         public int CustomerId
         {
             get;
@@ -27,7 +29,7 @@ namespace FreedomHatsCollection.Models
         {
             get;
             set;
-        }
+        } = string.Empty;
 
         public decimal TotalAmount
         {
@@ -83,5 +85,10 @@ namespace FreedomHatsCollection.Models
             set;
         } = new List<Product>();
 
+        public OrderDetails? OrderDetails
+        {
+            get;
+            set;
+        }
     }
 }
